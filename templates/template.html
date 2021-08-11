@@ -1,0 +1,248 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" style="height: 100%; margin: 0">
+<head th:fragment="head">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5GCB5NW');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="https://ok1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.13.0/js/okta-sign-in.min.js"
+            type="text/javascript"></script>
+    <!-- Start of HubSpot Embed Code -->
+    <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/7894908.js"></script>
+    <!-- End of HubSpot Embed Code -->
+    <link href="https://ok1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.13.0/css/okta-sign-in.min.css"
+          type="text/css" rel="stylesheet"/>
+    <link href="https://ok1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.13.0/css/okta-theme.css"
+          type="text/css" rel="stylesheet"/>
+    <link href="/static/carousel.css"
+          type="text/css" rel="stylesheet"/>
+    <link href="/static/bootstrap.min.css"
+          type="text/css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto"
+          type="text/css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <script src="/static/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <style>
+        body.login {
+            background-color: #f9f9f9;
+        }
+        .sample-view {
+            position: relative;
+            padding-bottom: 75%;
+            height: 0;
+            overflow: hidden;
+        }
+        .center {
+          text-align: center;
+          display: block;
+          justify-content: center;
+          align-items: center;
+        }
+        .sample-view iframe {
+            position: absolute;
+            top:0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        #okta-sign-in {
+            min-height: 0 !important;
+        }
+        div.plans {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    height: auto;
+                  }
+      
+        div.plan-container {
+                             flex: 1;
+                             padding: 10px;
+                             min-width: 250px;
+                             max-width: 250px;
+                             width: 100%;
+                           }
+        div.plan-container-selected {
+                             padding: 10px;
+                             width: 100%;
+                             height: 100%;
+                           }
+        /* The switch - the box around the slider */
+        .switch {
+          position: relative;
+          display: inline-block;
+          width: 60px;
+          height: 20px;
+        }
+        
+        /* Hide default HTML checkbox */
+        .switch input {
+          opacity: 0;
+          width: 0;
+          height: 0;
+        }
+        
+        /* The slider */
+        .slider {
+          position: absolute;
+          cursor: pointer;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: #ccc;
+          -webkit-transition: .4s;
+          transition: .4s;
+        }
+        
+        .slider:before {
+          position: absolute;
+          content: "";
+          height: 13px;
+          width: 13px;
+          left: 4px;
+          bottom: 4px;
+          background-color: white;
+          -webkit-transition: .4s;
+          transition: .4s;
+        }
+        
+        input:checked + .slider {
+          background-color: #2196F3;
+        }
+        
+        input:focus + .slider {
+          box-shadow: 0 0 1px #2196F3;
+        }
+        
+        input:checked + .slider:before {
+          -webkit-transform: translateX(40px);
+          -ms-transform: translateX(40px);
+          transform: translateX(40px);
+        }
+        
+        /* Rounded sliders */
+        .slider.round {
+          border-radius: 20px;
+        }
+        
+        .slider.round:before {
+          border-radius: 50%;
+        }
+        #wrap { width: 800px; height: 525px; padding: 0; overflow: hidden; }
+        #frame { width: 1053px; height: 700px; border: 1px solid black; }
+        #frame { 
+                 -ms-zoom: 0.75;
+                 -moz-transform: scale(0.75);
+                 -moz-transform-origin: 0 0;
+                 -o-transform: scale(0.5);
+                 -o-transform-origin: 0 0;
+                 -webkit-transform: scale(0.75);
+                 -webkit-transform-origin: 0 0;
+               }
+        .shadow {
+          -webkit-filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
+          filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
+          /* Similar syntax to box-shadow */
+        }
+    </style>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+
+    <title>Rephi User Portal</title>
+</head>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+<body style="font-family: Roboto; height: 100%; margin: 0; padding-bottom: 0px; padding-top: 50px">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5GCB5NW"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <img src="/static/rephi-logo.png" height=50px></img>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+         <li><a href="{{ url_for("portal") }}">Home</a></li>
+         {% if subscription.active %}
+           <li><a id="profile-button" href="{{ url_for("profile") }}">My Profile</a></li>
+           <li><a id="client-parameters" href="{{ url_for("edit_client_parameters") }}">Client Parameters</a></li>
+           {% if subscription.group_admin %}
+             <li><a id="manage-user-button" href="{{ url_for("manage_users") }}">Manage Users</a></li>
+           {% endif %}
+           <li><a id="subcription-button" href="{{ url_for("subscription") }}">Manage Subscription</a></li>
+         {% else %}
+           <li><a id="subscribe-button" href="{{ url_for("subscribe") }}">Subscribe</a></li>
+         {% endif %}
+      </ul>
+      {% if oidc.user_loggedin %}
+      <form method="post" action="{{ url_for("logout") }}" class="navbar-form navbar-right">
+          <button id="logout-button" type="submit" class="btn btn-danger">Logout</button>
+      </form>
+      {% else %}
+      <ul class="navbar-nav nav navbar-right">
+        <li><a href='/login'>Login</a></li>
+      </ul>
+      {% endif %}
+    </div>
+  </div>
+</nav>
+
+<div id="content" class="container" style="width: 100%; min-height: 100%; margin: 0px; padding: 0px">
+  <div id="content-inside" style="padding: 0px; padding-bottom: 80px">
+    {% block content %}{% endblock %}
+  </div>
+</div>
+<footer class="footer" style="width: 100%; background-color: #efecec; height: 80px; margin-top: -80px">
+  <div class="container">
+    <div style="display: flex; flex-direction:row">
+      <div style="flex: 1">
+        <div style="flex: 1; margin: 0"></div>
+        <img src="https://apex-logo.s3.us-east-2.amazonaws.com/logo.png" style="flex: 1; height: 75px; padding-left: 25px"></img>
+        <div style="flex: 1; margin: 0"></div>
+      </div>
+      <div style="flex: 1">
+        <p class="text-muted" style="padding: 0; margin: 0; margin-top: 10px; text-align: center">Apex Optimization</p>
+        <p class="text-muted" style="padding: 0; margin: 0; text-align: center"><a href="https://apexoptim.com">apexoptim.com</a></p>
+        <p class="text-muted" style="text-align: center">rephi@apexoptim.com</p>
+      </div>
+      <div style="flex: 1; display: flex; flex-direction: column; text-align: right">
+        <div style="flex: 1; margin: 0"></div>
+        <p style="flex: 1; margin: 0; padding-right: 25px"><a href="/privacypolicy">Privacy Policies</a></p>
+        <p style="flex: 1; margin: 0; padding-right: 25px"><a href="/terms-of-use">Terms of Use</a></p>
+        <div style="flex: 1; margin: 0"></div>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

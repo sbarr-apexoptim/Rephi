@@ -1,0 +1,29 @@
+html, body {margin: 0; height: 100%; overflow: hidden}
+
+.DateInput_input {
+    font-weight: 200;
+    font-size: 11px;
+    line-height: 30px;
+    color: #484848;
+    background-color: #fff;
+    padding: 2px 2px 2px;
+    width: 100%;
+    border: 0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 2px solid transparent;
+    border-left: 0;
+    border-radius: 0;
+}
+
+.DateInput {
+    width: 100%;
+}
+
+.SingleDatePicker {
+    width: 100%;
+}
+
+.SingleDatePickerInput {
+    width: 100%;
+}

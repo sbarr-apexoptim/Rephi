@@ -1,0 +1,60 @@
+{% extends "template.html" %}
+
+{% block content %}
+<div style="padding: 20px">
+  <div>
+      <h2>User Profile</h2>
+      <p>Hello, <span>{{ profile.name }}</span>. Below is the information that will appear in your dashboard.
+      </p>
+      <!--<a> <button id="edit-button" class="btn btn-primary">Edit profile</button>-->
+      <button onclick="location.href='/edit-profile'" type="button">
+           Edit profile</button>
+  
+  </div>
+  
+  <table class="table table-striped">
+      <thead>
+      <tr>
+          <th width=auto>User Information</th>
+          <th width=auto>Value</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for key, claim in user_info.items() %}
+      <tr>
+          <td>{{ key }}</td>
+          <td id="claim-{{ key }}">
+              {{ claim }}
+          </td>
+      </tr>
+      {% endfor %}
+      {% for key, claim in img_urls.items() %}
+      <tr>
+          <td>{{ key }}</td>
+          <td id="claim-{{ key }}">
+              <img src="{{claim}}" height="100px"\>
+          </td>
+      </tr>
+      {% endfor %}
+      <tr>
+        <td>Include Member FDIC logo</td>
+        <td>
+          {{ org_logos.include_fdic }}
+        </td>
+      </tr>
+      <tr>
+        <td>Include Equal Housing Lender logo</td>
+        <td>
+          {{ org_logos.include_ehl }}
+        </td>
+      </tr>
+      <tr>
+        <td>Disclaimer information</td>
+        <td>
+          {{ disclaimer_info }}
+        </td>
+      </tr>
+      </tbody>
+  </table>
+</div>
+{% endblock content %}

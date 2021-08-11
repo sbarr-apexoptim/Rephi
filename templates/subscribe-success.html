@@ -1,0 +1,32 @@
+{% extends "template.html" %}
+
+{% block content %}
+<div class="center">
+<h2>Thank you for your subscription!</h2>
+<table class="table table-bordered">
+  <thead>
+    <tr colspan=2>
+      <th>Subscription Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Plan name</td>
+      <td>{{ subscription_info.plan_name }}</td>
+    </tr>
+    <tr>
+      <td>State</td>
+      <td>{{ subscription_info.state }}</td>
+    </tr>
+    <tr>
+      <td>Subscription ID</td>
+      <td>{{ subscription_info.subscription_id }}</td>
+    </tr>
+    <tr>
+      <td>Order ID</td>
+      <td>{{ subscription_info.order_id }}</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+{% endblock content %}

@@ -1,0 +1,330 @@
+{% extends "template.html" %}
+
+{% block content %}
+
+{% if oidc.user_loggedin %}
+  {% if subscription.active %}
+    {% if subscription.group_admin %}
+      <div style="padding: 20px">
+        <h2>Refinance Analysis Dashboard - Group Administrator</h2>
+        <div>
+            <p>Welcome back, <span>{{ profile.name }}</span>!</p>
+            <p>Use this site to manage your group account.</p>
+            <p>Visit the <a href="{{ url_for('profile') }}">My Profile</a> page to edit your profile information which will be visible on your custom dashboard.</p>
+            <p>You can add or remove users on the <a href="{{ url_for('manage_users') }}">Manage Users</a> page.</p>
+            <p>Go to the <a href="{{ url_for('subscription') }}">Subscription</a> page to manage your subscription.</p>
+        
+            <p>Your unique dashboard url: <a href="{{ unique_url }}" target=_blank>{{ unique_url }}</a></p>
+        </div>
+      </div>
+    {% else %}
+      <div style="padding: 20px">
+        <h2>Refinance Analysis Dashboard</h2>
+        <div>
+            <p>Welcome back, <span>{{ profile.name }}</span>!</p>
+            <p>Use this site to manage your custom dashboard.</p>
+            <p>Visit the <a href="{{ url_for('profile') }}">My Profile</a> page to edit your profile information which will be visible on your custom dashboard.</p>
+            <p>Go to the <a href="{{ url_for('subscription') }}">Subscription</a> page to manage your subscription.</p>
+        
+            <p>Your unique dashboard url: <a href="{{ unique_url }}" target=_blank>{{ unique_url }}</a></p>
+        </div>
+      </div>
+    {% endif %}
+  {% else %}
+    <div id="myCarousel" class="carousel slide" data-ride="carousel" style="height: 600px; margin-bottom: 0px">
+      <ol class="carousel-indicators" style="bottom: 0px">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+        <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+      </ol>
+      <div class="carousel-inner" role="listbox" style="height: 100%">
+        <div class="item active" style="height: 100%; background-color: #30333c">
+          <div class="first-slide"></div>
+          <div class="container">
+            <div class="carousel-caption" style="right: 10%; left: 10%">
+              <h1 style="padding-bottom: 20px">Increase your refinance volume with Rephi</h1>
+              <div style="padding-bottom: 50px; width:100%; height:100%; display: flex; flex-direction: row; flex-wrap: wrap">
+                <div style="flex: 1; text-align: center; justify-content: center; align-items: center; margin: auto">
+                  <div style="min-width: 200px; padding-right: 20px; padding-left: 20px;  padding-bottom: 20px">
+                    <p style="margin: 0; padding: 0; text-align: center">Give your clients the tools to make their decision to refinance easier. Simple to use, interactive charts will show clients exactly when they will breakeven from lender fees.</p>
+                  </div>
+                </div>
+                <div style="flex: 1; justify-content: center; align-items: center; margin: auto">
+                  <img src="/static/payoff.svg" style="font-family: Roboto; width: 50vw; max-width: 500px; min-width: 200px; padding: 10px -webkit-box-shadow: 0px 0px 5px 5px #000000; box-shadow: 0px 0px 5px 5px #000000"></img>
+                </div>
+              </div>
+              <a class="btn btn-lg btn-primary" href="https://rephi-dashboard.com" style="background-color: #1880ff" target="_blank" role="button">Try Rephi for free</a>
+            </div>
+          </div>
+        </div>
+        <div class="item" style="height: 100%; background-color: #30333c">
+          <div class="second-slide"></div>
+          <div class="container">
+            <div class="carousel-caption" style="padding-bottom: 50px; right: 10%; left: 10%">
+              <h2>Subscribe to Rephi to get your customized dashboard</h2>
+              <div style="padding-bottom: 20px; width:100%; height:100%; display: flex; flex-direction: column">
+                <div style="display: flex; flex: 1; text-align: center">
+                  <div style="padding-bottom: 20px; justify-content: center; align-items: center; margin: auto">
+                      <p style="margin: 0; padding: 0">
+                        Upgrade to a premium subscription for only $3 a month to add a tile to your dashboard with your professional information.
+                        You'll get your custom URL allowing you to share your dashboard directly with your clients. 
+                      </p>
+                  </div>
+                </div>
+                <div style="padding-bottom: 20px; display: flex">
+                  <div style="flex: 1 1 0%;">
+                  </div>
+                  <div style="flex: 1; margin: auto; justify-content: center; align-items: center; width:fit-content; box-shadow: rgb(0, 0, 0) 0px 11px 15px 5px; height: 110px; background: rgb(48, 51, 60); border-radius: 5px; display: flex; flex-direction: row; height: 110px;">
+                    <div style="font-family: Roboto; font-size: 12px; float: left; vertical-align: middle; align-self: center; padding-left: 10px; color: rgb(237, 237, 237);">
+                      <img src="/static/kbarr.jpg" style="height: 95px; padding-left: 5px;">
+                    </div>
+                    <div style="font-family: Roboto; font-size: 12px; float: left; vertical-align: middle; align-self: center; padding-left: 10px; color: rgb(237, 237, 237);">
+                      <div style="white-space: nowrap; vertical-align: middle;">
+                        <h1 style="margin: 0px; display: block; vertical-align: middle; padding-bottom: 5px; padding-left: 3px; font-family: Roboto; font-size: 20px; line-height: 10px; color: rgb(237, 237, 237);">Jane Doe</h1>
+                        <i style="margin: 0px; font-family: Roboto; font-size: 12px; display: block; line-height: 10px; padding-top: 5px; padding-left: 3px; color: rgb(237, 237, 237);">Loan Officer</i>
+                        <h6 style="margin: 0px; font-family: Roboto; font-size: 12px; display: block; line-height: 10px; padding-top: 5px; padding-left: 3px; color: rgb(237, 237, 237);">
+                          <a style="margin: 0; padding: 0">j.doe@apexoptim.com</a>
+                        </h6>
+                        <h6 style="margin: 0px; font-family: Roboto; font-size: 12px; display: block; line-height: 10px; padding-top: 5px; padding-left: 3px; color: rgb(237, 237, 237);">(444) 542-0293</h6>
+                        <h6 style="margin: 0px; font-family: Roboto; font-size: 12px; display: block; line-height: 10px; padding-top: 5px; padding-left: 3px; color: rgb(237, 237, 237);">NMLS #123456</h6>
+                      </div>
+                    </div>
+                    <div style="display: inline-grid; padding-left: 10px; padding-right: 10px; vertical-align: middle; height: 100%; align-self: center; line-height: 10px;">
+                      <a href="https://www.linkedin.com" target="_blank" style="float: left; margin: 0px; height: 25px; padding: 0px 5px 0px 0px; line-height: 0;">
+                        <img src="https://www.keesingtechnologies.com/wp-content/uploads/2018/07/Linkedin-Icon.png" style="height: 30px; padding-top: 5px;">
+                      </a>
+                      <a href="https://twitter.com" target="_blank" style="float: left; margin: 0px; height: 25px; padding: 0px 5px 0px 0px; line-height: 0;">
+                        <img src="https://cdn.pixabay.com/photo/2017/06/22/14/23/twitter-2430933_960_720.png" style="height: 30px; padding-top: 5px;">
+                      </a>
+                      <a href="https://facebook.com" target="_blank" style="float: left; margin: 0px; height: 25px; padding: 0px 5px 0px 0px; line-height: 0;">
+                        <img src="https://cdn.pixabay.com/photo/2017/06/22/06/22/facebook-2429746_960_720.png" style="height: 30px; padding-top: 5px;">
+                      </a>
+                    </div>
+                  </div>
+                  <div style="flex: 1 1 0%;">
+                  </div>
+                </div>
+              </div>
+              <a class="btn btn-lg btn-primary" href="https://rephi-dashboard.com/subscribe/" style="background-color: #1880ff" role="button">Subscribe</a>
+            </div>
+          </div>
+        </div>
+        <div class="item" style="height: 100%; background-color: #30333c">
+          <div class="third-slide"></div>
+          <div class="container">
+            <div class="carousel-caption" style="right: 10%; left: 10%">
+              <h1>Plans that scale to your needs</h1>
+              <div style="padding-bottom: 20px; width:100%; height:100%; display: flex; flex-direction: column">
+                <div style="display: flex; flex: 1; text-align: center">
+                  <div style="justify-content: center; align-items: center; margin: auto">
+                    <p>Discounted plans available for teams. Contact rephi@apexoptim.com for group plans over 25 members.</p>
+                  </div>
+                </div>
+                <div style="flex: 1; display: flex; flex-direction: row">
+                  <div style="flex: 1"></div>
+                  <div style="flex: 1">
+                    <img src="/static/five_men.svg" class="shadow" style="height: 20vw; padding: 20px; min-height: 150px"></img>
+                  </div>
+                  <div style="flex: 1"></div>
+                </div>
+              </div>
+              <a class="btn btn-lg btn-primary" href="https://rephi-dashboard.com/subscribe/" style="background-color: #1880ff" role="button">Subscribe</a>
+            </div>
+          </div>
+        </div>
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap">
+      <div style="margin: auto; min-width: 300px; width: 75vw; text-align: center; display: flex; justify-content: center; align-items: center">
+        <div>
+          <h2>What is Rephi?</h2>
+          <h4 style="padding-top: 5px; margin: auto; text-align: justify">Rephi is an interactive dashboard used to compare a client's current mortgage to a refinanced loan. The dashboard contains various charts showing clients how much money they will save by refinancing, and exactly when they will breakeven from lender fees.</h4>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap">
+      <div style="margin: auto; min-width: 300px; width: 75vw; text-align: center; display: flex; justify-content: center; align-items: center">
+        <div>
+          <h2>How to use Rephi</h2>
+          <h4 style="text-align: justify">Rephi is designed to be sent to your clients using a unique web address provided to you after subscribing. A free version is also available at <a href="https://rephi-dashboard.com">rephi-dashboard.com</a></h4>
+          <ol style="padding-top: 10px; text-align: left">
+            <li>Signup and subscribe</li>
+            <li>Customize your dashboard</li>
+            <li>Send your unique URL to the client</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap">
+      <div style="margin: auto; min-width: 300px; width: 75vw; text-align: center; display: flex; justify-content: center; align-items: center">
+        <div>
+          <h2>Why use Rephi?</h2>
+          <h4 style="text-align: justify; padding-top: 5px; margin: auto">A 2014 study in the Journal of Financial Economics [1] found that nearly 20% of borrowers could have saved substantially when interest rates fell but failed to do so largely due to:</h4>
+          <ol style="text-align: left; padding-top: 10px">
+            <li>Information barriers relating to refinancing costs,</li>
+            <li>Procrastination, and</li>
+            <li>Difficulty understanding the complexity of the refinancing process</li>
+          </ol>
+          <p style="text-align: justify">Rephi can help address these issues by giving borrowers the information they need to be confident in the decision to refinance. Each graph is presented in a simple and digestible format and includes a detailed description ensuring your clients know exactly how to interpret the information in front of them. Your custom URL is also easily emailed to your clients to remind them of the financial benefits of refinancing. Let Rephi educate your clients on the loan while you focus on following leads.
+          <p>[1] Keys, Benjamin J., Devin G. Pope, and Jaren C. Pope. "Failure to refinance." Journal of Financial Economics 122.3 (2016): 482-499.</p>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% else %}
+  <div id="myCarousel" class="carousel slide" data-ride="carousel" style="height: 600px; margin-bottom: 0px">
+    <ol class="carousel-indicators" style="bottom: 0px">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+      <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+    </ol>
+    <div class="carousel-inner" role="listbox" style="height: 100%">
+      <div class="item active" style="height: 100%; background-color: #30333c">
+        <div class="first-slide"></div>
+        <div class="container">
+          <div class="carousel-caption" style="right: 10%; left: 10%">
+            <h1 style="padding-bottom: 20px">Increase your refinance volume with Rephi</h1>
+            <div style="padding-bottom: 50px; width:100%; height:100%; display: flex; flex-direction: row; flex-wrap: wrap">
+              <div style="flex: 1; text-align: center; justify-content: center; align-items: center; margin: auto">
+                <div style="min-width: 200px; padding-right: 20px; padding-left: 20px;  padding-bottom: 20px">
+                  <p style="margin: 0; padding: 0; text-align: center">Give your clients the tools to make their decision to refinance easier. Simple to use, interactive charts will show clients exactly when they will breakeven from lender fees.</p>
+                </div>
+              </div>
+              <div style="flex: 1; justify-content: center; align-items: center; margin: auto">
+                <img src="/static/payoff.svg" style="font-family: Roboto; width: 50vw; max-width: 500px; min-width: 200px; padding: 10px -webkit-box-shadow: 0px 0px 5px 5px #000000; box-shadow: 0px 0px 5px 5px #000000"></img>
+              </div>
+            </div>
+            <a class="btn btn-lg btn-primary" href="https://rephi-dashboard.com" style="background-color: #1880ff" target="_blank" role="button">Try Rephi for free</a>
+          </div>
+        </div>
+      </div>
+      <div class="item" style="height: 100%; background-color: #30333c">
+        <div class="second-slide"></div>
+        <div class="container">
+          <div class="carousel-caption" style="padding-bottom: 50px; right: 10%; left: 10%">
+            <h2>Subscribe to Rephi to get your customized dashboard</h2>
+            <div style="padding-bottom: 20px; width:100%; height:100%; display: flex; flex-direction: column">
+              <div style="display: flex; flex: 1; text-align: center">
+                <div style="padding-bottom: 20px; justify-content: center; align-items: center; margin: auto">
+                    <p style="margin: 0; padding: 0">
+                      Upgrade to a premium subscription for only $3 a month to add a tile to your dashboard with your professional information.
+                      You'll get your custom URL allowing you to share your dashboard directly with your clients. 
+                    </p>
+                </div>
+              </div>
+              <div style="padding-bottom: 20px; display: flex">
+                <div style="flex: 1 1 0%;">
+                </div>
+                <div style="flex: 1; margin: auto; justify-content: center; align-items: center; width:fit-content; box-shadow: rgb(0, 0, 0) 0px 11px 15px 5px; height: 110px; background: rgb(48, 51, 60); border-radius: 5px; display: flex; flex-direction: row; height: 110px;">
+                  <div style="font-family: Roboto; font-size: 12px; float: left; vertical-align: middle; align-self: center; padding-left: 10px; color: rgb(237, 237, 237);">
+                    <img src="/static/kbarr.jpg" style="height: 95px; padding-left: 5px;">
+                  </div>
+                  <div style="font-family: Roboto; font-size: 12px; float: left; vertical-align: middle; align-self: center; padding-left: 10px; color: rgb(237, 237, 237);">
+                    <div style="white-space: nowrap; vertical-align: middle;">
+                      <h1 style="margin: 0px; display: block; vertical-align: middle; padding-bottom: 5px; padding-left: 3px; font-family: Roboto; font-size: 20px; line-height: 10px; color: rgb(237, 237, 237);">Jane Doe</h1>
+                      <i style="margin: 0px; font-family: Roboto; font-size: 12px; display: block; line-height: 10px; padding-top: 5px; padding-left: 3px; color: rgb(237, 237, 237);">Loan Officer</i>
+                      <h6 style="margin: 0px; font-family: Roboto; font-size: 12px; display: block; line-height: 10px; padding-top: 5px; padding-left: 3px; color: rgb(237, 237, 237);">
+                        <a style="margin: 0; padding: 0">j.doe@apexoptim.com</a>
+                      </h6>
+                      <h6 style="margin: 0px; font-family: Roboto; font-size: 12px; display: block; line-height: 10px; padding-top: 5px; padding-left: 3px; color: rgb(237, 237, 237);">(444) 542-0293</h6>
+                      <h6 style="margin: 0px; font-family: Roboto; font-size: 12px; display: block; line-height: 10px; padding-top: 5px; padding-left: 3px; color: rgb(237, 237, 237);">NMLS #123456</h6>
+                    </div>
+                  </div>
+                  <div style="display: inline-grid; padding-left: 10px; padding-right: 10px; vertical-align: middle; height: 100%; align-self: center; line-height: 10px;">
+                    <a href="https://www.linkedin.com" target="_blank" style="float: left; margin: 0px; height: 25px; padding: 0px 5px 0px 0px; line-height: 0;">
+                      <img src="https://www.keesingtechnologies.com/wp-content/uploads/2018/07/Linkedin-Icon.png" style="height: 30px; padding-top: 5px;">
+                    </a>
+                    <a href="https://twitter.com" target="_blank" style="float: left; margin: 0px; height: 25px; padding: 0px 5px 0px 0px; line-height: 0;">
+                      <img src="https://cdn.pixabay.com/photo/2017/06/22/14/23/twitter-2430933_960_720.png" style="height: 30px; padding-top: 5px;">
+                    </a>
+                    <a href="https://facebook.com" target="_blank" style="float: left; margin: 0px; height: 25px; padding: 0px 5px 0px 0px; line-height: 0;">
+                      <img src="https://cdn.pixabay.com/photo/2017/06/22/06/22/facebook-2429746_960_720.png" style="height: 30px; padding-top: 5px;">
+                    </a>
+                  </div>
+                </div>
+                <div style="flex: 1 1 0%;">
+                </div>
+              </div>
+            </div>
+            <a class="btn btn-lg btn-primary" href="https://rephi-dashboard.com/subscribe/" style="background-color: #1880ff" role="button">Subscribe</a>
+          </div>
+        </div>
+      </div>
+      <div class="item" style="height: 100%; background-color: #30333c">
+        <div class="third-slide"></div>
+        <div class="container">
+          <div class="carousel-caption" style="right: 10%; left: 10%">
+            <h1>Plans that scale to your needs</h1>
+            <div style="padding-bottom: 20px; width:100%; height:100%; display: flex; flex-direction: column">
+              <div style="display: flex; flex: 1; text-align: center">
+                <div style="justify-content: center; align-items: center; margin: auto">
+                  <p>Discounted plans available for teams. Contact rephi@apexoptim.com for group plans over 25 members.</p>
+                </div>
+              </div>
+              <div style="flex: 1; display: flex; flex-direction: row">
+                <div style="flex: 1"></div>
+                <div style="flex: 1">
+                  <img src="/static/five_men.svg" class="shadow" style="height: 20vw; padding: 20px; min-height: 150px"></img>
+                </div>
+                <div style="flex: 1"></div>
+              </div>
+            </div>
+            <a class="btn btn-lg btn-primary" href="https://rephi-dashboard.com/subscribe/" style="background-color: #1880ff" role="button">Subscribe</a>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+  <div style="display: flex; flex-wrap: wrap">
+    <div style="margin: auto; min-width: 300px; width: 75vw; text-align: center; display: flex; justify-content: center; align-items: center">
+      <div>
+        <h2>What is Rephi?</h2>
+        <h4 style="padding-top: 5px; margin: auto; text-align: justify">Rephi is an interactive dashboard used to compare a client's current mortgage to a refinanced loan. The dashboard contains various charts showing clients how much money they will save by refinancing, and exactly when they will breakeven from lender fees.</h4>
+      </div>
+    </div>
+  </div>
+  <div style="display: flex; flex-wrap: wrap">
+    <div style="margin: auto; min-width: 300px; width: 75vw; text-align: center; display: flex; justify-content: center; align-items: center">
+      <div>
+        <h2>How to use Rephi</h2>
+        <h4 style="text-align: justify">Rephi is designed to be sent to your clients using a unique web address provided to you after subscribing. A free version is also available at <a href="https://rephi-dashboard.com">rephi-dashboard.com</a></h4>
+        <ol style="padding-top: 10px; text-align: left">
+          <li>Signup and subscribe</li>
+          <li>Customize your dashboard</li>
+          <li>Send your unique URL to the client</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <div style="display: flex; flex-wrap: wrap">
+    <div style="margin: auto; min-width: 300px; width: 75vw; text-align: center; display: flex; justify-content: center; align-items: center">
+      <div>
+        <h2>Why use Rephi?</h2>
+        <h4 style="text-align: justify; padding-top: 5px; margin: auto">A 2014 study in the Journal of Financial Economics [1] found that nearly 20% of borrowers could have saved substantially when interest rates fell but failed to do so largely due to:</h4>
+        <ol style="text-align: left; padding-top: 10px">
+          <li>Information barriers relating to refinancing costs, and</li>
+          <li>Difficulty understanding the complexity of the refinancing process</li>
+        </ol>
+          <p style="text-align: justify">Rephi can help address these issues by giving borrowers the information they need to be confident in the decision to refinance. Each graph is presented in a simple and digestible format and includes a detailed description ensuring your clients know exactly how to interpret the information in front of them. Your custom URL is also easily emailed to your clients to remind them of the financial benefits of refinancing. Let Rephi educate your clients on the loan while you focus on following leads.
+        <p>[1] Keys, Benjamin J., Devin G. Pope, and Jaren C. Pope. "Failure to refinance." Journal of Financial Economics 122.3 (2016): 482-499.</p>
+      </div>
+    </div>
+  </div>
+{% endif %}
+{% endblock content %}

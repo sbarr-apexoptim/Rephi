@@ -1,0 +1,44 @@
+{% extends "template.html" %}
+
+{% block content %}
+<div style="padding: 20px">
+  <div class="center">
+  <h2>Manage active users</h2>
+  <i>*Be sure to click submit to apply changes</i>
+  <form method="post" action="" type="submit">
+  <table class="table" style="margin: auto; width: auto;">
+    <thead>
+      <tr>
+        <th>Active</th>
+        <th>Email</th>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in range(0,nusers) %}
+        <tr>
+          <td>
+            <label class="switch">
+              {% if active[i] %}
+                <input type="checkbox" name="active{{ i }}" value={{ active[i] }} checked>
+              {% else %}
+                <input type="checkbox" name="active{{ i }}" value={{ active[i] }}>
+              {% endif %}
+              <span class="slider round"></span>
+            </label>
+          </td>
+          <td>
+            <input type="text" name="email{{ i }}" value="{{ email[i] }}">
+          </td>
+          <td>
+            <input type="text" name="name{{ i }}" value="{{ name[i] }}">
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <button id="manage-user-submit-button" type="submit" style="padding-bottom: 10px" class="btn btn-danger">Submit</button>
+  </form>
+  </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,99 @@
+{% extends "template.html" %}
+
+<style>
+  div.main-container {width:100vw;
+                      margin: 0;
+                      position: relative;
+                      top: 50%;
+                      left: 50%;
+                      -ms-transform: translate(-50%, -50%);
+                      transform: translate(-50%, -50%)}
+</style>
+
+{% block content %}
+<div class="center">
+<h2>Sign up today for a 1 week free trial and then only $10 per month.</h2>
+<h2>Cancel anytime!</h2>
+
+<div class="main-container">
+<!-- Live -->
+<!--
+<div id="paypal-button-container"></div>
+<script src="https://www.paypal.com/sdk/js?client-id=AcyxpDXw0gqCfRs00FptFYlWe9WhNit29P9klZP0NzjLk0SEXFlTIyD6tvYmunmO8gzixJ1y9FBMENyL&vault=true" data-sdk-integration-source="button-factory"></script>
+<script>
+  paypal.Buttons({
+      style: {
+          shape: 'rect',
+          color: 'gold',
+          layout: 'vertical',
+          label: 'subscribe',
+          
+      },
+      createSubscription: function(data, actions) {
+        return actions.subscription.create({
+          'plan_id': 'P-2EA7567319511682SL3C5JFI'
+        });
+      },
+      onApprove: function(data, actions) {
+        alert("Thank you for your subscription!");
+        return fetch("/success", {
+              method: 'post',
+              headers: {
+                'content-type': 'application/json'
+              },
+              body: JSON.stringify({
+                token:   data.orderID,
+                subscription_id:   data.subscriptionID,
+                payerID: data.payerID
+              })
+            }).then(function(response){
+                    // redirect to the completed page if paid
+                    window.location.href = '/';
+            });
+      }
+  }).render('#paypal-button-container');
+</script>
+
+-->
+
+<!-- Sandbox -->
+
+<div id="paypal-button-container"></div>
+<script src="https://www.paypal.com/sdk/js?client-id=AYWqlbhzXnu0H7GlVI4t_6CExfPyO6c20ts8YvMaKV9NH5U3pmm1AISM_2LxegvnzBlY-SqoLADDJJjP&vault=true" data-sdk-integration-source="button-factory"></script>
+<script>
+  paypal.Buttons({
+      style: {
+          shape: 'rect',
+          color: 'gold',
+          layout: 'vertical',
+          label: 'subscribe',
+          
+      },
+      createSubscription: function(data, actions) {
+        return actions.subscription.create({
+          'plan_id': 'P-3YC157852Y689611CL3NHQZQ'
+        });
+      },
+      onApprove: function(data, actions) {
+        alert("Thank you for your subscription!");
+        return fetch("/success", {
+              method: 'post',
+              headers: {
+                'content-type': 'application/json'
+              },
+              body: JSON.stringify({
+                token:   data.orderID,
+                subscription_id:   data.subscriptionID,
+                payerID: data.payerID
+              })
+            }).then(function(response){
+                    // redirect to the completed page if paid
+                    window.location.href = '/';
+            });
+      }
+  }).render('#paypal-button-container');
+</script>
+
+</div>
+</div>
+{% endblock content %}

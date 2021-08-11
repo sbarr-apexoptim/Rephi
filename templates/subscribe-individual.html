@@ -1,0 +1,64 @@
+{% extends "template.html" %}
+
+{% block content %}
+<div class="center" style="padding: 20px">
+<h2>Subscribe to the individual plan</h2>
+<div style="margin: auto; max-width:400px;">
+  <div style="display: block;">
+
+    <div class=plan-container-selected>
+      <div class="panel panel-primary" style="height: 100%">
+        <div class="panel-heading">
+          <h3 class="panel-title">Individual Plan</h3>
+        </div>
+        <div class="panel-body">
+          <div style="height: auto">
+              <li>Access to custom dashboard</li><br/>
+              <li>Tailor parameters for your clients</li><br/>
+              <li>Cancel anytime</li><br/>
+          </div>
+          <div style="height: auto; vertical-align: middle">
+            <div id="paypal-button-container"></div>
+            <script src="https://www.paypal.com/sdk/js?client-id=AeEoPmSKMzQruzNPio7R8hsQYQHxfeRcHBWN__e7RyBFEGU1sEhsZ623q8S6dPAUsMI6Gqo__1mO_sS-&vault=true" data-sdk-integration-source="button-factory"></script>
+            <script>
+              paypal.Buttons({
+                  style: {
+                      shape: 'rect',
+                      color: 'gold',
+                      layout: 'vertical',
+                      label: 'subscribe',
+                      
+                  },
+                  createSubscription: function(data, actions) {
+                    return actions.subscription.create({
+                      'plan_id': 'P-90085274UB672505SL4EK3VI'
+                    });
+                  },
+                  onApprove: function(data, actions) {
+                    alert("Thank you for your subscription! Click ok and you will be redirected");
+                    return fetch('/paypal-transaction-complete', {
+                      method: 'post',
+                      headers: {
+                        'content-type': 'application/json'
+                      },
+                      body: JSON.stringify({
+                          orderID: data.orderID,
+                          subscriptionID: data.subscriptionID,
+                          subscriptionType: "individual"
+                      })
+                    }).then(function(response){
+                      window.location.href = '/subscribe-success';
+                    });
+                  }
+              }).render('#paypal-button-container');
+            </script>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-default" onclick="location.href='/subscribe'">Back to plans</button>
+    </div>
+
+  </div>
+</div>
+</div>
+{% endblock content %}

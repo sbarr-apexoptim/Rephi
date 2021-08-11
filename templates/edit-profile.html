@@ -1,0 +1,86 @@
+{% extends "template.html" %}
+
+{% block content %}
+<div style="padding: 20px">
+  <div>
+      <h2>User Profile</h2>
+      <p>Hello, <span>{{ profile.name }}</span>. Below is the information that will appear in your dashboard.
+      </p>
+  
+  </div>
+  
+  <table class="table table-striped">
+      <form method="post" enctype="multipart/form-data">
+      <thead>
+      <tr>
+          <th width=auto>User Information</th>
+          <th width=auto>Value</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for key, claim in user_info.items() %}
+      <tr>
+          <td>{{ key }}</td>
+          <td id="claim-{{ key }}">
+              {% if key|string() == "Color scheme" %}
+                <select name="{{ key }}-input">
+                  {% for color_key, color_claim in color_scheme_options.items() %}
+                    {% if color_claim|string() == claim|string() %}
+                      <option value="{{ color_key }}" selected=selected>{{ color_claim }}</option>
+                    {% else %}
+                      <option value="{{ color_key }}">{{ color_claim }}</option>
+                    {% endif %}
+                  {% endfor %}
+                </select>
+              {% else %}
+                <input type="text" name="{{ key }}-input" value="{{ claim }}" size="50"/>
+              {% endif %}
+          </td>
+      </tr>
+      {% endfor %}
+      {% for key, claim in img_urls.items() %}
+      <tr>
+          <td>{{ key }}</td>
+          <td id="claim-{{ key }}">
+              <input type="file" name="{{ key }}-input" id="{{ key }}-input" accept="image/*"/>
+          </td>
+      </tr>
+      {% endfor %}
+      <tr>
+        <td>Include Member FDIC logo</td>
+        <td>
+          <label class="switch">
+            {% if org_logos.include_fdic %}
+              <input type="checkbox" name="fdic" value={{ org_logos.include_fdic }} checked>
+            {% else %}
+              <input type="checkbox" name="fdic" value={{ org_logos.include_fdic }}>
+            {% endif %}
+            <span class="slider round"></span>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>Include Equal Housing Lender logo</td>
+        <td>
+          <label class="switch">
+            {% if org_logos.include_ehl %}
+              <input type="checkbox" name="ehl" value={{ org_logos.include_ehl }} checked>
+            {% else %}
+              <input type="checkbox" name="ehl" value={{ org_logos.include_ehl }}>
+            {% endif %}
+            <span class="slider round"></span>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>Disclaimer information</td>
+        <td>
+          <input type="text" name="disclaimers" value="{{ disclaimer_info }}" size="50"/>
+        </td>
+      </tr>
+      </tbody>
+      <button id="submit-button" type="submit" class="btn btn-danger">Submit</button>
+      </form>
+  </table>
+</div>
+{% endblock content %}

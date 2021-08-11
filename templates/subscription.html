@@ -1,0 +1,56 @@
+{% extends "template.html" %}
+
+{% block content %}
+<div style="padding: 20px">
+<div>
+  <h2>Subscription</h2>
+</div>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th width=auto>User Information</th>
+        <th width=auto>Value</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% if not subscription.group_user %}
+      {% for key, claim in agreement.items() %}
+      <tr>
+          <td>{{ key }}</td>
+          <td id="claim-{{ key }}">
+              {{ claim }}
+          </td>
+      </tr>
+      {% endfor %}
+    {% else %}
+      <tr>
+        <td>Status</td>
+        {% if subscription.active %}
+          <td>Active</td>
+        {% else %}
+          <td>Inactive</td>
+        {% endif %}
+      </tr>
+      <tr>
+        <td>Subscription type</td>
+        <td>Group member</td>
+      </tr>
+      <tr>
+        <td>Account holder</td>
+        <td>{{ subscription.account_holder_name }}</td>
+      </tr>
+      <tr>
+        <td>Account holder email</td>
+        <td>{{ subscription.account_holder_email }}</td>
+      </tr>
+    {% endif %}
+    </tbody>
+</table>
+
+{%if subscription.paid_user %}
+  {% if not subscription.group_user %}
+    <a href={{ url_for('cancel_subscription') }}>Cancel Subscription</a>
+  {% endif %}
+{% endif %}
+</div>
+{% endblock content %}

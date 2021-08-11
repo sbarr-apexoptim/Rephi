@@ -1,0 +1,100 @@
+{% extends "template.html" %}
+
+{% block content %}
+<div class="center" style="padding: 20px">
+<h2>Plans that scale with your needs</h2>
+<div class="main-container">
+  <form method="post" action="" type="submit">
+  <div class="plans">
+
+    <div class=plan-container>
+      <div class="panel panel-default" style="height: 100%">
+        <div class="panel-heading">
+          <h3 class="panel-title">Free Plan</h3>
+        </div>
+        <div class="panel-body">
+          <div style="height: 200px">
+            <!--<ul style="list-style-type:none;">-->
+              <br/>
+              <br/>
+              <br/>
+              <li>Access to the Rephi dashboard</li><br/>
+              <li>Free unlimited use</li><br/>
+              <br/>
+              <br/>
+              <br/>
+            <!--</ul>-->
+          </div>
+          <div style="height: 50px; vertical-align: middle">
+            <button style="display: block; height: 100%; width: 100%" type ="submit" name="action" value="free">Free</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class=plan-container>
+      <div class="panel panel-primary" style="height: 100%">
+        <div class="panel-heading">
+          <h3 class="panel-title">Individual Plan</h3>
+        </div>
+        <div class="panel-body">
+          <div style="height: 200px">
+            <!--<ul style="list-style-type:none;">-->
+            <br/>
+            <li>Access to custom dashboard</li><br/>
+            <li>Tailor parameters for your clients</li><br/>
+            <li>$3 per month</li><br/>
+            <li>Cancel anytime</li><br/>
+            <br/>
+            <!--</ul>-->
+          </div>
+          <div style="height: 50px; vertical-align: middle">
+            <button style="display: block; height: 100%; width: 100%" type ="submit" name="action" value="individual">Subscribe</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class=plan-container>
+      <div class="panel panel-default" style="height: 100%">
+        <div class="panel-heading">
+          <h3 class="panel-title">10 User Plan</h3>
+        </div>
+        <div class="panel-body">
+          <div style="height: 200px">
+            <li>Access to custom dashboards for up to 10 users</li><br/>
+            <li>Simple to activate/deactivate users from administrator account</li><br/>
+            <li>$22.50 per month</li><br/>
+            <li>Cancel anytime</li><br/>
+          </div>
+          <div style="height: 50px; vertical-align: middle">
+            <button style="display: block; height: 100%; width: 100%" type ="submit" name="action" value="10user">Subscribe</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class=plan-container>
+      <div class="panel panel-default" style="height: 100%">
+        <div class="panel-heading">
+          <h3 class="panel-title">25 User Plan</h3>
+        </div>
+        <div class="panel-body">
+          <div style="height: 200px">
+            <li>Access to custom dashboards for up to 25 users</li><br/>
+            <li>Simple to activate/deactivate users from administrator account</li><br/>
+            <li>$50 per month</li><br/>
+            <li>Cancel anytime</li><br/>
+          </div>
+          <div style="height: 50px; vertical-align: middle">
+            <button style="display: block; height: 100%; width: 100%" type ="submit" name="action" value="25user">Subscribe</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  </form>
+</div>
+</div>
+{% endblock content %}

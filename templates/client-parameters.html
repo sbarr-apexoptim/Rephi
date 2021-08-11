@@ -1,0 +1,10 @@
+{% extends "template.html" %}
+
+{% block content %}
+<div style="padding: 20px">
+    <h2>Client specific parameters</h2>
+    <p>Send this url to your clients and their information will be pre-filled on their dashboard:</p>
+    <a style="max-width: 1000px; word-wrap: break-word" href="{{ prefill }}" target=_blank>{{ prefill }}</a>
+
+</div>
+{% endblock content %}

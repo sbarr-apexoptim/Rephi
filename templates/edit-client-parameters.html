@@ -1,0 +1,107 @@
+{% extends "template.html" %}
+
+{% block content %}
+<div style="padding: 20px">
+  <div>
+      <h2>Client specific parameters</h2>
+      <p>Use this page to set parameters specifically for your clients.</p>
+      <p>Fill in whichever parameters you like and click submit to generate a url to send the client.</p>
+      <p>Fixed values will prevent the client from changing them. It is generally only recommended to fix closing costs and the interest rate of the refinanced loan.</p>
+  
+  </div>
+  
+  <table class="table table-striped">
+      <form method="post" enctype="multipart/form-data">
+      <thead>
+      <tr>
+          <th width=auto>Current Mortgage</th>
+          <th width=auto>Value</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+          <td>Principal</td>
+          <td id="p-label">
+            <input type="text" name="p-input" value="" size="50"/>
+          </td>
+      </tr>
+      <tr>
+          <td>Interest rate</td>
+          <td id="ir-label">
+            <input type="text" name="ir-input" value="" size="50"/>
+          </td>
+      </tr>
+      <tr>
+          <td>Term (in months)</td>
+          <td id="t-label">
+            <input type="text" name="t-input" value="" size="50"/>
+          </td>
+      </tr>
+      <tr>
+          <td>Extra principal</td>
+          <td id="ep-label">
+            <input type="text" name="ep-input" value="" size="50"/>
+          </td>
+      </tr>
+      <tr>
+          <td>Start month</td>
+          <td id="startmonth-label">
+            <input type="text" name="startmonth-input" value="" size="50"/>
+          </td>
+      </tr>
+      <tr>
+          <td>Start year</td>
+          <td id="startyear-label">
+            <input type="text" name="startyear-input" value="" size="50"/>
+          </td>
+      </tr>
+      </tbody>
+      <thead>
+      <tr>
+          <th width=auto>Refinanced Mortgage</th>
+          <th width=auto>Value</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+          <td>Principal</td>
+          <td id="rp-label">
+            <input type="text" name="rp-input" value="" size="50"/>
+          </td>
+      </tr>
+      <tr>
+          <td>Closing costs</td>
+          <td id="cc-label">
+            <input type="text" name="cc-input" value="" size="50"/>
+          </td>
+      </tr>
+      <tr>
+          <td>Interest rate</td>
+          <td id="rr-label">
+            <input type="text" name="rr-input" value="" size="50"/>
+          </td>
+      </tr>
+      <tr>
+          <td>Term (in months)</td>
+          <td id="rt-label">
+            <input type="text" name="rt-input" value="" size="50"/>
+          </td>
+      </tr>
+      <tr>
+          <td>Start month</td>
+          <td id="refimonth-label">
+            <input type="text" name="refimonth-input" value="" size="50"/>
+          </td>
+      </tr>
+      <tr>
+          <td>Start year</td>
+          <td id="refiyear-label">
+            <input type="text" name="refiyear-input" value="" size="50"/>
+          </td>
+      </tr>
+      </tbody>
+      <button id="client-submit-button" type="submit" style="padding-bottom: 10px" class="btn btn-danger">Submit</button>
+      </form>
+  </table>
+</div>
+{% endblock content %}
