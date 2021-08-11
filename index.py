@@ -74,15 +74,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             renderer=kwargs['renderer'])
 
 application = flask.Flask(__name__)
-application.config.update({
-    'SECRET_KEY': 'refi_app_key!',
-    'OIDC_CLIENT_SECRETS': 'static/client_secrets.json',
-    'OIDC_DEBUG': True,
-    'OIDC_ID_TOKEN_COOKIE_SECURE': False,
-    'OIDC_SCOPES': ["openid", "profile"],
-    'OVERWRITE_REDIRECT_URI': 'https://rephi-dashboard.com/authorization-code/callback',
-    'OIDC_CALLBACK_ROUTE': '/authorization-code/callback'
-})
+if os.path.isfile("static/client_secrets.json"):
+  application.config.update({
+      'SECRET_KEY': 'refi_app_key!',
+      'OIDC_CLIENT_SECRETS': 'static/client_secrets.json',
+      'OIDC_DEBUG': True,
+      'OIDC_ID_TOKEN_COOKIE_SECURE': False,
+      'OIDC_SCOPES': ["openid", "profile"],
+      'OVERWRITE_REDIRECT_URI': 'https://rephi-dashboard.com/authorization-code/callback',
+      'OIDC_CALLBACK_ROUTE': '/authorization-code/callback'
+  })
 
 app = CustomDash(__name__,
                 server=application,
