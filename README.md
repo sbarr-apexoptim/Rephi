@@ -4,9 +4,7 @@
 
 Rephi is a refinance analysis dashboard designed to help homeowners understand whether refinancing their loan is beneficial. Unlike other refinance calculators, it accounts for accumulation of home equity when determining the breakeven.
 
-<p align="center">
-  <img src="https://refi-user-images.s3.amazonaws.com/Screenshot+2021-08-10+at+22-59-03+Rephi+-+Refinance+Calculator.png" alt="screenshot" height="400">
-</p>
+![1](rephi-screenshot.png "Rephi screenshot")
 
 This repository also contains a user portal built in Flask for mortgage professionals to create their own custom dashboard. They also get a custom url which can be sent to clients to market their services.
 
